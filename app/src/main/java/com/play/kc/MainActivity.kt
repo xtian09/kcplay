@@ -1,9 +1,7 @@
 package com.play.kc
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedCallback
@@ -38,9 +36,9 @@ class MainActivity : ComponentActivity() {
     companion object {
         private const val KEY_SENSOR = "None"
 
-        init {
-            System.loadLibrary("demo")
-        }
+//        init {
+//            System.loadLibrary("demo")
+//        }
     }
 
     private var mCurrentSensor by mutableStateOf(VendorSensor.NONE)
@@ -68,13 +66,6 @@ class MainActivity : ComponentActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(KEY_SENSOR, mCurrentSensor.ordinal)
-    }
-
-    private fun launchUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.setData(Uri.parse(url))
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
     }
 
     @Composable
@@ -113,5 +104,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private external fun stringFromJNI(): String
+//    private external fun stringFromJNI(): String
 }
